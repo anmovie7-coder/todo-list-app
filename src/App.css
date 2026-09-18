@@ -4,8 +4,8 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: 24px 20px 60px;
-  gap: 16px;
+  padding: 28px 20px 60px;
+  gap: 18px;
 }
 
 .app__header {
@@ -14,6 +14,15 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.app__header h1 {
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .app__header-actions {
@@ -26,8 +35,18 @@
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  border-radius: 8px;
-  padding: 8px 14px;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.app__header-actions button:hover,
+.import-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
 }
 
 .import-button {
@@ -45,28 +64,44 @@
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.quick-add input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .quick-add button {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  border-radius: 8px;
-  padding: 10px 14px;
+  border-radius: 12px;
+  padding: 10px 18px;
   white-space: nowrap;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.quick-add button:hover {
+  transform: translateY(-1px);
 }
 
 .quick-add button[type='submit'] {
-  background: var(--accent);
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
   color: var(--accent-contrast);
-  border-color: var(--accent);
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+  font-weight: 700;
 }
 
 .app__body {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 210px 1fr;
   gap: 20px;
   align-items: start;
 }
@@ -80,19 +115,20 @@
 .sidebar {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 .sidebar h3 {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text);
-  opacity: 0.6;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  opacity: 0.85;
   margin-bottom: 8px;
 }
 
@@ -105,13 +141,21 @@
   background: transparent;
   border: none;
   color: var(--text);
-  border-radius: 6px;
-  padding: 6px 8px;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.sidebar button:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  transform: translateX(2px);
 }
 
 .sidebar button.active {
-  background: var(--accent);
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
   color: var(--accent-contrast);
+  box-shadow: var(--shadow-md);
 }
 
 .button-group {
@@ -136,10 +180,11 @@
 }
 
 .tag-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 15%, transparent);
 }
 
 .sidebar select {
@@ -147,8 +192,8 @@
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
-  border-radius: 6px;
-  padding: 6px 8px;
+  border-radius: 8px;
+  padding: 7px 8px;
 }
 
 .task-list {
@@ -157,34 +202,61 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .task-list__empty {
   text-align: center;
-  padding: 40px 0;
+  padding: 50px 0;
   opacity: 0.6;
+  font-size: 15px;
+}
+
+.task-list__empty::before {
+  content: '✨';
+  display: block;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+@keyframes task-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .task-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 4px solid transparent;
-  border-radius: 10px;
-  padding: 12px 14px;
+  border-left: 5px solid transparent;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  animation: task-in 0.25s ease;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .task-item.priority-high {
   border-left-color: var(--danger);
 }
 .task-item.priority-medium {
-  border-left-color: #e0a83a;
+  border-left-color: var(--warning);
 }
 .task-item.priority-low {
-  border-left-color: #6bbf8e;
+  border-left-color: var(--success);
 }
 
 .task-item.is-done {
@@ -196,13 +268,19 @@
 
 .task-item.is-overdue .due-date {
   color: var(--danger);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .task-item input[type='checkbox'] {
   margin-top: 4px;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.task-item input[type='checkbox']:active {
+  transform: scale(0.85);
 }
 
 .task-item__body {
@@ -212,7 +290,7 @@
 }
 
 .task-item__title {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-h);
   word-break: break-word;
 }
@@ -221,17 +299,33 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 12px;
-  opacity: 0.85;
 }
 
 .priority-tag,
 .due-date {
-  background: var(--bg);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 2px 8px;
+  padding: 3px 10px;
+  font-weight: 500;
+}
+
+.priority-high .priority-tag {
+  background: color-mix(in srgb, var(--danger) 16%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 30%, var(--border));
+  color: var(--danger);
+}
+.priority-medium .priority-tag {
+  background: color-mix(in srgb, var(--warning) 18%, var(--surface));
+  border-color: color-mix(in srgb, var(--warning) 30%, var(--border));
+  color: color-mix(in srgb, var(--warning) 70%, var(--text-h));
+}
+.priority-low .priority-tag {
+  background: color-mix(in srgb, var(--success) 16%, var(--surface));
+  border-color: color-mix(in srgb, var(--success) 30%, var(--border));
+  color: color-mix(in srgb, var(--success) 60%, var(--text-h));
 }
 
 .tag-badge {
@@ -240,8 +334,10 @@
   gap: 4px;
   color: #fff;
   border-radius: 999px;
-  padding: 2px 8px;
+  padding: 3px 10px;
   font-size: 12px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
 }
 
 .tag-badge__remove {
@@ -256,15 +352,24 @@
   border: none;
   background: transparent;
   color: var(--danger);
-  border-radius: 6px;
-  padding: 6px 8px;
+  border-radius: 8px;
+  padding: 6px 10px;
   flex-shrink: 0;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.task-item__delete:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
 }
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(20, 15, 40, 0.45);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,14 +377,27 @@
   z-index: 10;
 }
 
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .modal {
   background: var(--surface);
-  border-radius: 14px;
-  padding: 24px;
+  border-radius: 18px;
+  padding: 26px;
   width: 100%;
   max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 24px 60px -20px rgba(20, 15, 40, 0.4);
+  animation: modal-in 0.2s ease;
 }
 
 .task-form {
@@ -288,12 +406,20 @@
   gap: 14px;
 }
 
+.task-form h2 {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .task-form label {
   display: flex;
   flex-direction: column;
   gap: 4px;
   font-size: 13px;
   color: var(--text);
+  font-weight: 500;
 }
 
 .task-form input,
@@ -302,8 +428,17 @@
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
-  border-radius: 8px;
-  padding: 8px 10px;
+  border-radius: 10px;
+  padding: 9px 11px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+.task-form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
 .task-form__row {
@@ -323,6 +458,7 @@
   flex-direction: column;
   gap: 8px;
   font-size: 13px;
+  font-weight: 500;
 }
 
 .task-form__tag-list {
@@ -336,6 +472,7 @@
   align-items: center;
   gap: 4px;
   flex-direction: row;
+  font-weight: 400;
 }
 
 .task-form__new-tag {
@@ -345,6 +482,15 @@
 
 .task-form__new-tag input {
   flex: 1;
+}
+
+.task-form__new-tag button {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 500;
 }
 
 .task-form__actions {
@@ -358,12 +504,20 @@
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
-  border-radius: 8px;
-  padding: 8px 16px;
+  border-radius: 10px;
+  padding: 9px 18px;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.task-form__actions button:hover {
+  transform: translateY(-1px);
 }
 
 .task-form__actions button[type='submit'] {
-  background: var(--accent);
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
   color: var(--accent-contrast);
-  border-color: var(--accent);
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+  font-weight: 700;
 }
