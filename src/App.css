@@ -1,0 +1,369 @@
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 60px;
+  gap: 16px;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.app__header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.app__header-actions button,
+.import-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.import-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.quick-add {
+  display: flex;
+  gap: 8px;
+}
+
+.quick-add input {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.quick-add button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+.quick-add button[type='submit'] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.app__body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .app__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sidebar h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.sidebar button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.sidebar button.active {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar__empty {
+  font-size: 13px;
+  opacity: 0.6;
+  padding: 4px 8px;
+}
+
+.tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sidebar select {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-list__empty {
+  text-align: center;
+  padding: 40px 0;
+  opacity: 0.6;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid transparent;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.task-item.priority-high {
+  border-left-color: var(--danger);
+}
+.task-item.priority-medium {
+  border-left-color: #e0a83a;
+}
+.task-item.priority-low {
+  border-left-color: #6bbf8e;
+}
+
+.task-item.is-done {
+  opacity: 0.55;
+}
+.task-item.is-done .task-item__title {
+  text-decoration: line-through;
+}
+
+.task-item.is-overdue .due-date {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.task-item input[type='checkbox'] {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+}
+
+.task-item__body {
+  flex: 1;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.task-item__title {
+  font-weight: 500;
+  color: var(--text-h);
+  word-break: break-word;
+}
+
+.task-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.priority-tag,
+.due-date {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.tag-badge__remove {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  font-size: 12px;
+}
+
+.task-item__delete {
+  border: none;
+  background: transparent;
+  color: var(--danger);
+  border-radius: 6px;
+  padding: 6px 8px;
+  flex-shrink: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.modal {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.task-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.task-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .task-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.task-form__tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.task-form__tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-direction: row;
+}
+
+.task-form__new-tag {
+  display: flex;
+  gap: 6px;
+}
+
+.task-form__new-tag input {
+  flex: 1;
+}
+
+.task-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.task-form__actions button {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.task-form__actions button[type='submit'] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
