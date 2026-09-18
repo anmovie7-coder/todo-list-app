@@ -85,12 +85,15 @@ export default function App() {
   return (
     <div className="app">
       <header className="app__header">
-        <h1>할 일 목록</h1>
+        <div className="app__title">
+          <h1>🚀 할 일 목록</h1>
+          <p className="app__tagline">오늘도 하나씩, 신나게 해치워봐요!</p>
+        </div>
         <div className="app__header-actions">
-          {notifStatus !== 'granted' && <button onClick={handleEnableNotifications}>알림 켜기</button>}
-          <button onClick={exportData}>내보내기</button>
+          {notifStatus !== 'granted' && <button onClick={handleEnableNotifications}>🔔 알림</button>}
+          <button onClick={exportData}>⬇️ 내보내기</button>
           <label className="import-button">
-            가져오기
+            ⬆️ 가져오기
             <input type="file" accept="application/json" onChange={handleImport} hidden />
           </label>
         </div>
@@ -98,13 +101,13 @@ export default function App() {
 
       <form className="quick-add" onSubmit={handleQuickAdd}>
         <input
-          placeholder="할 일을 입력하고 Enter"
+          placeholder="할 일을 입력하고 Enter ✏️"
           value={quickTitle}
           onChange={(e) => setQuickTitle(e.target.value)}
         />
-        <button type="submit">추가</button>
+        <button type="submit">+ 추가</button>
         <button type="button" onClick={() => setFormOpen(true)}>
-          자세히 추가
+          ✨ 자세히
         </button>
       </form>
 
@@ -138,7 +141,9 @@ export default function App() {
               onDelete={(id) => taskRepository.remove(id)}
             />
           ))}
-          {visibleTasks.length === 0 && <li className="task-list__empty">표시할 할 일이 없습니다.</li>}
+          {visibleTasks.length === 0 && (
+            <li className="task-list__empty">표시할 할 일이 없어요. 새로운 할 일을 추가해보세요!</li>
+          )}
         </ul>
       </div>
 

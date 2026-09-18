@@ -47,7 +47,7 @@ export function TaskForm({ initial, tags, onSubmit, onCancel, onCreateTag }: Tas
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <h2>{initial ? '할 일 수정' : '할 일 추가'}</h2>
+      <h2>{initial ? '✏️ 할 일 수정' : '✨ 할 일 추가'}</h2>
 
       <label>
         제목
@@ -63,9 +63,9 @@ export function TaskForm({ initial, tags, onSubmit, onCancel, onCreateTag }: Tas
         <label>
           우선순위
           <select value={priority} onChange={(e) => setPriority(e.target.value as Priority)}>
-            <option value="high">높음</option>
-            <option value="medium">보통</option>
-            <option value="low">낮음</option>
+            <option value="high">🔥 높음</option>
+            <option value="medium">⭐ 보통</option>
+            <option value="low">🌱 낮음</option>
           </select>
         </label>
 
@@ -97,7 +97,7 @@ export function TaskForm({ initial, tags, onSubmit, onCancel, onCreateTag }: Tas
             onChange={(e) => setNewTagName(e.target.value)}
           />
           <button type="button" onClick={handleCreateTag}>
-            추가
+            + 추가
           </button>
         </div>
       </div>
@@ -106,7 +106,7 @@ export function TaskForm({ initial, tags, onSubmit, onCancel, onCreateTag }: Tas
         <button type="button" onClick={onCancel}>
           취소
         </button>
-        <button type="submit">저장</button>
+        <button type="submit">저장 🎉</button>
       </div>
     </form>
   );

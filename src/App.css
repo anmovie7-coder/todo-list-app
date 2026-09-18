@@ -1,50 +1,59 @@
 .app {
-  max-width: 1000px;
+  max-width: 1020px;
   margin: 0 auto;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: 28px 20px 60px;
-  gap: 18px;
+  padding: 32px 20px 60px;
+  gap: 20px;
 }
 
 .app__header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
 }
 
-.app__header h1 {
-  font-size: 30px;
-  letter-spacing: -0.02em;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+.app__title h1 {
+  font-size: 40px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-3) 55%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+.app__tagline {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  color: var(--text);
+  opacity: 0.75;
+  font-size: 15px;
+}
+
 .app__header-actions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .app__header-actions button,
 .import-button {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--surface);
-  color: var(--text);
+  color: var(--text-h);
   border-radius: 999px;
-  padding: 8px 16px;
-  font-weight: 500;
+  padding: 9px 16px;
+  font-weight: 700;
   box-shadow: var(--shadow-sm);
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .app__header-actions button:hover,
 .import-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) rotate(-1deg);
   box-shadow: var(--shadow-md);
   border-color: var(--accent);
 }
@@ -56,52 +65,52 @@
 
 .quick-add {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  background: var(--surface);
+  padding: 8px;
+  border-radius: 22px;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .quick-add input {
   flex: 1;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: none;
+  background: transparent;
   color: var(--text);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 12px 16px;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  font-size: 16px;
 }
 
 .quick-add input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .quick-add button {
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 10px 18px;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 20px;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: 700;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: var(--bg);
+  color: var(--text-h);
 }
 
 .quick-add button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .quick-add button[type='submit'] {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  background: linear-gradient(120deg, var(--accent), var(--accent-3));
   color: var(--accent-contrast);
-  border-color: transparent;
   box-shadow: var(--shadow-md);
-  font-weight: 700;
 }
 
 .app__body {
   display: grid;
-  grid-template-columns: 210px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 20px;
   align-items: start;
 }
@@ -114,22 +123,20 @@
 
 .sidebar {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
+  border: 2px solid var(--border);
+  border-radius: 22px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
   box-shadow: var(--shadow-sm);
 }
 
 .sidebar h3 {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 13px;
   color: var(--accent);
-  opacity: 0.85;
-  margin-bottom: 8px;
+  opacity: 0.9;
+  margin-bottom: 10px;
 }
 
 .sidebar button {
@@ -141,27 +148,28 @@
   background: transparent;
   border: none;
   color: var(--text);
-  border-radius: 8px;
-  padding: 7px 10px;
-  font-weight: 500;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 700;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
 }
 
 .sidebar button:hover {
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-  transform: translateX(2px);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateX(3px);
 }
 
 .sidebar button.active {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  background: linear-gradient(120deg, var(--accent), var(--accent-3));
   color: var(--accent-contrast);
   box-shadow: var(--shadow-md);
+  transform: scale(1.03);
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .sidebar__tags {
@@ -170,7 +178,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .sidebar__empty {
@@ -180,8 +188,8 @@
 }
 
 .tag-dot {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
   box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 15%, transparent);
@@ -189,11 +197,12 @@
 
 .sidebar select {
   width: 100%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--bg);
-  color: var(--text);
-  border-radius: 8px;
-  padding: 7px 8px;
+  color: var(--text-h);
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-weight: 700;
 }
 
 .task-list {
@@ -202,27 +211,28 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .task-list__empty {
   text-align: center;
-  padding: 50px 0;
-  opacity: 0.6;
-  font-size: 15px;
+  padding: 60px 20px;
+  opacity: 0.7;
+  font-size: 17px;
+  font-family: var(--font-display);
 }
 
 .task-list__empty::before {
-  content: '✨';
+  content: '🎈';
   display: block;
-  font-size: 28px;
-  margin-bottom: 8px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 @keyframes task-in {
   from {
     opacity: 0;
-    transform: translateY(6px) scale(0.98);
+    transform: translateY(10px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -235,52 +245,57 @@
   align-items: flex-start;
   gap: 12px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 5px solid transparent;
-  border-radius: 14px;
-  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   animation: task-in 0.25s ease;
 }
 
 .task-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) rotate(-0.3deg);
   box-shadow: var(--shadow-md);
 }
 
 .task-item.priority-high {
-  border-left-color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 45%, var(--border));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--danger) 8%, var(--surface)), var(--surface) 60%);
 }
 .task-item.priority-medium {
-  border-left-color: var(--warning);
+  border-color: color-mix(in srgb, var(--warning) 45%, var(--border));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--warning) 10%, var(--surface)), var(--surface) 60%);
 }
 .task-item.priority-low {
-  border-left-color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 45%, var(--border));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--success) 8%, var(--surface)), var(--surface) 60%);
 }
 
 .task-item.is-done {
   opacity: 0.55;
+  background: var(--surface);
 }
 .task-item.is-done .task-item__title {
   text-decoration: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
 }
 
 .task-item.is-overdue .due-date {
   color: var(--danger);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .task-item input[type='checkbox'] {
   margin-top: 4px;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: transform 0.12s ease;
 }
 
 .task-item input[type='checkbox']:active {
-  transform: scale(0.85);
+  transform: scale(0.8);
 }
 
 .task-item__body {
@@ -290,7 +305,8 @@
 }
 
 .task-item__title {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 16px;
   color: var(--text-h);
   word-break: break-word;
 }
@@ -299,33 +315,33 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 8px;
+  margin-top: 9px;
   font-size: 12px;
 }
 
 .priority-tag,
 .due-date {
-  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
-  border: 1px solid var(--border);
+  background: var(--bg);
+  border: 2px solid var(--border);
   border-radius: 999px;
   padding: 3px 10px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .priority-high .priority-tag {
-  background: color-mix(in srgb, var(--danger) 16%, var(--surface));
-  border-color: color-mix(in srgb, var(--danger) 30%, var(--border));
-  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 20%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--border));
+  color: color-mix(in srgb, var(--danger) 80%, var(--text-h));
 }
 .priority-medium .priority-tag {
-  background: color-mix(in srgb, var(--warning) 18%, var(--surface));
-  border-color: color-mix(in srgb, var(--warning) 30%, var(--border));
-  color: color-mix(in srgb, var(--warning) 70%, var(--text-h));
+  background: color-mix(in srgb, var(--warning) 22%, var(--surface));
+  border-color: color-mix(in srgb, var(--warning) 40%, var(--border));
+  color: color-mix(in srgb, var(--warning) 65%, var(--text-h));
 }
 .priority-low .priority-tag {
-  background: color-mix(in srgb, var(--success) 16%, var(--surface));
-  border-color: color-mix(in srgb, var(--success) 30%, var(--border));
-  color: color-mix(in srgb, var(--success) 60%, var(--text-h));
+  background: color-mix(in srgb, var(--success) 20%, var(--surface));
+  border-color: color-mix(in srgb, var(--success) 40%, var(--border));
+  color: color-mix(in srgb, var(--success) 55%, var(--text-h));
 }
 
 .tag-badge {
@@ -334,9 +350,9 @@
   gap: 4px;
   color: #fff;
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 3px 11px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   box-shadow: var(--shadow-sm);
 }
 
@@ -351,25 +367,25 @@
 .task-item__delete {
   border: none;
   background: transparent;
-  color: var(--danger);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 6px 10px;
   flex-shrink: 0;
-  font-weight: 500;
-  opacity: 0.7;
-  transition: opacity 0.15s ease, background 0.15s ease;
+  font-size: 16px;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
 .task-item__delete:hover {
   opacity: 1;
-  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  transform: scale(1.1) rotate(-6deg);
 }
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 15, 40, 0.45);
-  backdrop-filter: blur(2px);
+  background: rgba(20, 10, 40, 0.5);
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,7 +396,7 @@
 @keyframes modal-in {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.97);
+    transform: translateY(12px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -390,14 +406,15 @@
 
 .modal {
   background: var(--surface);
-  border-radius: 18px;
-  padding: 26px;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
   width: 100%;
   max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 24px 60px -20px rgba(20, 15, 40, 0.4);
-  animation: modal-in 0.2s ease;
+  box-shadow: 0 30px 70px -20px rgba(30, 10, 60, 0.45);
+  animation: modal-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .task-form {
@@ -407,7 +424,8 @@
 }
 
 .task-form h2 {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  font-size: 26px;
+  background: linear-gradient(120deg, var(--accent), var(--accent-3));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -419,17 +437,18 @@
   gap: 4px;
   font-size: 13px;
   color: var(--text);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .task-form input,
 .task-form textarea,
 .task-form select {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--bg);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 9px 11px;
+  color: var(--text-h);
+  border-radius: 12px;
+  padding: 9px 12px;
+  font-weight: 500;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -438,7 +457,7 @@
 .task-form select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: var(--shadow-glow);
 }
 
 .task-form__row {
@@ -458,7 +477,7 @@
   flex-direction: column;
   gap: 8px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .task-form__tag-list {
@@ -472,7 +491,7 @@
   align-items: center;
   gap: 4px;
   flex-direction: row;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .task-form__new-tag {
@@ -485,12 +504,12 @@
 }
 
 .task-form__new-tag button {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--bg);
-  color: var(--text);
-  border-radius: 10px;
+  color: var(--text-h);
+  border-radius: 12px;
   padding: 8px 14px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .task-form__actions {
@@ -501,23 +520,22 @@
 }
 
 .task-form__actions button {
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   background: var(--bg);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 9px 18px;
-  font-weight: 500;
+  color: var(--text-h);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 700;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .task-form__actions button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .task-form__actions button[type='submit'] {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  background: linear-gradient(120deg, var(--accent), var(--accent-3));
   color: var(--accent-contrast);
   border-color: transparent;
   box-shadow: var(--shadow-md);
-  font-weight: 700;
 }

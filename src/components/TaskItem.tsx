@@ -3,9 +3,9 @@ import { isOverdue } from '../features/tasks/filterTasks';
 import { TagBadge } from './TagBadge';
 
 const PRIORITY_LABEL: Record<Task['priority'], string> = {
-  high: '높음',
-  medium: '보통',
-  low: '낮음',
+  high: '🔥 높음',
+  medium: '⭐ 보통',
+  low: '🌱 낮음',
 };
 
 interface TaskItemProps {
@@ -47,7 +47,7 @@ export function TaskItem({ task, tags, onToggle, onEdit, onDelete }: TaskItemPro
         </div>
       </div>
       <button type="button" className="task-item__delete" onClick={() => onDelete(task.id)} aria-label="삭제">
-        삭제
+        🗑️
       </button>
     </li>
   );

@@ -16,8 +16,8 @@ interface SidebarProps {
   onSortChange: (key: SortKey) => void;
 }
 
-const STATUS_LABEL: Record<StatusFilter, string> = { all: '전체', todo: '진행중', done: '완료' };
-const PRIORITY_LABEL: Record<Priority, string> = { high: '높음', medium: '보통', low: '낮음' };
+const STATUS_LABEL: Record<StatusFilter, string> = { all: '🗂 전체', todo: '🕑 진행중', done: '✅ 완료' };
+const PRIORITY_LABEL: Record<Priority, string> = { high: '🔥 높음', medium: '⭐ 보통', low: '🌱 낮음' };
 
 export function Sidebar({
   tags,
@@ -36,14 +36,14 @@ export function Sidebar({
   return (
     <aside className="sidebar">
       <section>
-        <h3>보기</h3>
+        <h3>👀 보기</h3>
         <button className={onlyToday ? 'active' : ''} onClick={() => onOnlyTodayChange(!onlyToday)}>
-          오늘 마감
+          📅 오늘 마감
         </button>
       </section>
 
       <section>
-        <h3>상태</h3>
+        <h3>📌 상태</h3>
         <div className="button-group">
           {(['all', 'todo', 'done'] as StatusFilter[]).map((s) => (
             <button key={s} className={status === s ? 'active' : ''} onClick={() => onStatusChange(s)}>
@@ -54,7 +54,7 @@ export function Sidebar({
       </section>
 
       <section>
-        <h3>우선순위</h3>
+        <h3>⚡ 우선순위</h3>
         <div className="button-group">
           {(['high', 'medium', 'low'] as Priority[]).map((p) => (
             <button
@@ -69,7 +69,7 @@ export function Sidebar({
       </section>
 
       <section>
-        <h3>태그</h3>
+        <h3>🏷️ 태그</h3>
         <ul className="sidebar__tags">
           {tags.map((tag) => (
             <li key={tag.id}>
@@ -87,7 +87,7 @@ export function Sidebar({
       </section>
 
       <section>
-        <h3>정렬</h3>
+        <h3>🔀 정렬</h3>
         <select value={sortKey} onChange={(e) => onSortChange(e.target.value as SortKey)}>
           <option value="dueDate">마감일순</option>
           <option value="priority">우선순위순</option>
